@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRI Solutions · Your Finance Function, Sorted</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1B2D4F;
+    --orange: #C4832A;
+    --body-text: #2C2C2C;
+    --muted: #6B7280;
+    --card-bg: #F2F2F2;
+    --border: #E5E7EB;
+    --green: #27AE60;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: var(--body-text); background: var(--white); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .page { max-width: 920px; margin: 0 auto; padding: 48px 52px; }
+  .header { display: flex; align-items: center; gap: 18px; margin-bottom: 8px; }
+  .header-logo { height: 52px; width: auto; }
+  .header-brand { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: var(--navy); letter-spacing: 0.04em; border-bottom: 2px solid var(--orange); padding-bottom: 3px; line-height: 1.2; }
+  .header-sub { font-size: 11px; font-weight: 500; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 2px; }
+  .doc-title { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 34px; color: var(--navy); margin-top: 36px; margin-bottom: 6px; line-height: 1.15; }
+  .doc-subtitle { font-size: 13px; color: var(--muted); font-weight: 500; margin-bottom: 32px; }
+  .divider { height: 1px; background: var(--border); margin: 30px 0; }
+  .section-label { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+  .section-label::after { content: ''; flex: 1; height: 2px; background: linear-gradient(to right, var(--orange), transparent); border-radius: 1px; }
+  .section-heading { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 22px; color: var(--navy); margin-bottom: 14px; line-height: 1.3; }
+  .body-text { font-size: 14px; line-height: 1.75; color: var(--body-text); max-width: 780px; margin-bottom: 12px; }
+  .body-text strong { color: var(--navy); }
+  .value-stack { display: flex; flex-direction: column; gap: 12px; margin-top: 8px; }
+  .value-card { background: var(--card-bg); border-radius: 6px; padding: 18px 22px; border-left: 4px solid var(--orange); display: flex; gap: 18px; align-items: flex-start; }
+  .value-label { font-size: 12px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.06em; min-width: 110px; flex-shrink: 0; padding-top: 2px; }
+  .value-text { font-size: 13px; line-height: 1.65; color: var(--body-text); }
+  .savings-anchor { margin-top: 14px; text-align: center; padding: 14px 20px; background: var(--navy); border-radius: 6px; }
+  .savings-anchor span { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--white); }
+  .savings-anchor span em { color: var(--orange); font-style: normal; }
+  .team-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+  .team-card { background: var(--card-bg); border-radius: 6px; padding: 16px 18px; border-left: 3px solid var(--navy); }
+  .team-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .team-role { font-size: 10.5px; color: var(--orange); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+  .team-desc { font-size: 12.5px; color: var(--body-text); line-height: 1.55; }
+  .credential-bar { margin-top: 12px; background: var(--navy); border-radius: 6px; padding: 11px 20px; font-size: 12.5px; color: rgba(255,255,255,0.85); text-align: center; }
+  .credential-bar strong { color: var(--white); }
+  .process-steps { margin-top: 10px; display: flex; flex-direction: column; gap: 0; }
+  .process-step { display: flex; gap: 16px; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .process-step:last-child { border-bottom: none; }
+  .step-num { flex-shrink: 0; width: 28px; height: 28px; background: var(--navy); border-radius: 50%; color: var(--white); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .step-title { font-size: 13.5px; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+  .step-desc { font-size: 13px; color: var(--muted); line-height: 1.55; }
+  .scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 8px; }
+  .scope-card { background: var(--card-bg); border-radius: 6px; padding: 16px 18px; }
+  .scope-card--yes { border-top: 3px solid var(--green); }
+  .scope-card--no { border-top: 3px solid var(--border); }
+  .scope-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .scope-title--yes { color: var(--green); }
+  .scope-title--no { color: var(--muted); }
+  .scope-card li { font-size: 12.5px; line-height: 1.55; color: var(--body-text); margin-bottom: 4px; padding-left: 14px; position: relative; list-style: none; }
+  .scope-card li::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; }
+  .scope-card--yes li::before { background: var(--green); }
+  .scope-card--no li::before { background: var(--muted); }
+  .price-block { background: var(--navy); border-radius: 8px; padding: 26px 30px; margin-top: 10px; color: var(--white); }
+  .price-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+  .price-item .p-num { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--white); display: block; line-height: 1; }
+  .price-item .p-label { font-size: 10.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 5px; font-weight: 500; }
+  .price-divider-v { width: 1px; height: 36px; background: rgba(255,255,255,0.12); }
+  .price-includes { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 22px; }
+  .price-inc-item { font-size: 12.5px; color: rgba(255,255,255,0.8); padding-left: 14px; position: relative; line-height: 1.5; }
+  .price-inc-item::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: var(--orange); }
+  .price-inc-item.not-inc { color: rgba(255,255,255,0.35); text-decoration: line-through; }
+  .price-inc-item.not-inc::before { background: rgba(255,255,255,0.2); }
+  .savings-line { margin-top: 16px; text-align: center; font-size: 13px; color: rgba(255,255,255,0.65); }
+  .savings-line strong { color: var(--orange); }
+  .next-step { margin-top: 30px; background: var(--navy); border-radius: 6px; padding: 22px 26px; }
+  .next-step-label { font-size: 11px; font-weight: 700; color: var(--orange); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 6px; }
+  .next-step-text { font-size: 14px; color: var(--white); line-height: 1.65; font-weight: 500; }
+  .footer { margin-top: 24px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .footer-text { font-size: 10.5px; color: var(--muted); }
+  .footer-mark { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 12px; color: var(--navy); }
+  @media print {
+    @page { size: A4; margin: 14mm 16mm; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .page { padding: 0; max-width: 100%; }
+    .doc-title { font-size: 26px; margin-top: 20px; }
+    .divider { margin: 18px 0; }
+    .next-step { margin-top: 20px; padding: 14px 18px; }
+    .price-block { padding: 18px 22px; }
+    .team-row { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <img class="header-logo" src="data:image/png;base64,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" alt="CRI Solutions">
+    <div>
+      <div class="header-brand">CRI SOLUTIONS</div>
+      <div class="header-sub">Fractional CFO &amp; Finance Function Services</div>
+    </div>
+  </div>
+
+  <h1 class="doc-title">Your Finance Function, Sorted</h1>
+  <p class="doc-subtitle">What CRI does, what it costs, and what changes when it&rsquo;s in place.</p>
+
+  <div class="divider"></div>
+
+  <!-- THE PROBLEM -->
+  <div class="section-label">The Problem</div>
+  <h2 class="section-heading">You&rsquo;ve Outgrown Your Finance Setup</h2>
+  <p class="body-text">Your business is growing. Revenue&rsquo;s up. But the finance side hasn&rsquo;t kept pace. You&rsquo;re still the one staring at the numbers every month, or relying on someone junior who doesn&rsquo;t really understand the business. The accountant does the year-end filing, but between January and November you&rsquo;re largely flying blind.</p>
+  <p class="body-text">You&rsquo;ve thought about hiring a Finance Director, but &euro;100k+ for one person feels like a big bet. So nothing changes. And every month, the same uneasy feeling: you&rsquo;re making decisions based on numbers you don&rsquo;t fully trust.</p>
+
+  <div class="divider"></div>
+
+  <!-- THE SOLUTION -->
+  <div class="section-label">The Solution</div>
+  <h2 class="section-heading">A Complete Finance Team for a Fraction of the Cost</h2>
+  <p class="body-text">CRI gives you a full finance function: CFO-level strategy, financial controllership, and monthly management accounts. All as an ongoing retainer. Within 90 days, you go from flying blind to making decisions based on numbers you actually trust.</p>
+
+  <div class="value-stack">
+    <div class="value-card">
+      <div class="value-label">Cost</div>
+      <div class="value-text">A full-time Finance Director costs &euro;100k to &euro;120k all-in. CRI delivers a <strong>full team</strong> of CFOs, financial controllers, and strategic oversight for <strong>&euro;36k a year</strong>.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-label">Continuity</div>
+      <div class="value-text">CRI doesn&rsquo;t do projects and disappear. The longer we work with you, the deeper the understanding. After six months, we know your numbers as well as you do.</div>
+    </div>
+    <div class="value-card">
+      <div class="value-label">Team Depth</div>
+      <div class="value-text">Most fractional CFOs are one-man bands. CRI is a team. You&rsquo;re never dependent on one person being available.</div>
+    </div>
+  </div>
+  <div class="savings-anchor"><span>Save <em>&euro;84,000</em> in year one vs. a full-time hire.</span></div>
+
+  <div class="divider"></div>
+
+  <!-- THE TEAM -->
+  <div class="section-label">The Team</div>
+  <h2 class="section-heading">Who&rsquo;s Across Your Account</h2>
+
+  <div class="team-row">
+    <div class="team-card">
+      <div class="team-name">Simon Cuddy</div>
+      <div class="team-role">Strategy &amp; Client Relationships</div>
+      <div class="team-desc">Commercial instinct and Irish business network. Identifies what&rsquo;s actually costing you and what to do about it.</div>
+    </div>
+    <div class="team-card">
+      <div class="team-name">Hesh</div>
+      <div class="team-role">Day-to-Day Finance Operations</div>
+      <div class="team-desc">Keeps your numbers clean and current. Management accounts, cashflow, reporting. Always across the account.</div>
+    </div>
+  </div>
+  <div class="credential-bar">Deloitte and KPMG trained &middot; <strong>70+ years combined experience</strong> &middot; Big 4 calibre, without the Big 4 invoice</div>
+
+  <div class="divider"></div>
+
+  <!-- WHAT ACTUALLY HAPPENS -->
+  <div class="section-label">What Actually Happens</div>
+  <h2 class="section-heading">Three Phases</h2>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <div>
+        <div class="step-title">Deep-Dive (Months 1 to 3)</div>
+        <div class="step-desc">CRI reviews your accounts, cashflow, cost structure, and reporting. Quick wins show up within the first few weeks. By the end of month three, you have a clear financial picture.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <div>
+        <div class="step-title">Monthly Rhythm</div>
+        <div class="step-desc">Clean management accounts every month. Cashflow visibility. Strategic input when decisions need a finance lens. A hire, a contract, a loan, a concern.</div>
+      </div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <div>
+        <div class="step-title">Fully Embedded</div>
+        <div class="step-desc">After six months, CRI knows your business, your cashflow patterns, and your risks as well as you do. Your accountant gets clean information at year-end. No scramble.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SCOPE -->
+  <div class="section-label">Scope</div>
+  <h2 class="section-heading">What&rsquo;s Included (And What Isn&rsquo;t)</h2>
+  <div class="scope-grid">
+    <div class="scope-card scope-card--yes">
+      <div class="scope-title scope-title--yes">CRI Handles</div>
+      <ul>
+        <li>Monthly management accounts</li>
+        <li>Cashflow reporting &amp; forecasting</li>
+        <li>CFO-level strategic oversight</li>
+        <li>Financial process setup &amp; improvement</li>
+        <li>Ongoing decision support</li>
+      </ul>
+    </div>
+    <div class="scope-card scope-card--no">
+      <div class="scope-title scope-title--no">Stays With Your Accountant</div>
+      <ul>
+        <li>Year-end statutory accounts &amp; filing</li>
+        <li>Tax returns</li>
+        <li>Audit services</li>
+        <li>Payroll (unless specifically scoped)</li>
+      </ul>
+    </div>
+  </div>
+  <p class="body-text" style="margin-top: 14px; font-size: 13px; color: var(--muted); font-style: italic;">Your accountant keeps their role. CRI fills the gap they don&rsquo;t. Everything between your day-to-day operations and your annual filing.</p>
+
+  <div class="divider"></div>
+
+  <!-- PRICING -->
+  <div class="section-label">Investment</div>
+  <h2 class="section-heading">Clear Numbers</h2>
+
+  <div class="price-block">
+    <div class="price-row">
+      <div class="price-item">
+        <span class="p-num">&euro;3,000</span>
+        <span class="p-label">Per month (base retainer)</span>
+      </div>
+      <div class="price-divider-v"></div>
+      <div class="price-item">
+        <span class="p-num">3 Months</span>
+        <span class="p-label">Minimum engagement</span>
+      </div>
+
+    </div>
+    <div class="price-includes">
+      <div class="price-inc-item">Monthly management accounts</div>
+      <div class="price-inc-item">Strategic input on demand</div>
+      <div class="price-inc-item">Cashflow oversight</div>
+      <div class="price-inc-item">Full team across your account</div>
+      <div class="price-inc-item not-inc">Additional time billed separately</div>
+      <div class="price-inc-item not-inc">Annual returns (your accountant)</div>
+    </div>
+    <div class="savings-line">A full-time Finance Director costs &euro;100,000 to &euro;120,000 all-in. CRI delivers more, for <strong>&euro;36,000 a year</strong>.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WHY NOW -->
+  <div class="section-label">Why Now</div>
+  <h2 class="section-heading">The Cost of Doing Nothing</h2>
+  <p class="body-text">Every month without a proper finance function is a month of decisions made on incomplete information. A mispriced contract. A hire you couldn&rsquo;t afford. A cashflow gap you didn&rsquo;t see coming until it was already a problem.</p>
+  <p class="body-text">The business you&rsquo;ve built deserves to be run with the right numbers. The longer that gap stays open, the more it costs.</p>
+
+  <!-- CTA -->
+  <div class="next-step">
+    <div class="next-step-label">Start With a Conversation</div>
+    <div class="next-step-text">No pitch. No commitment. Just an honest look at where your finance function stands and whether CRI is the right fit. A conversation with Simon takes 30 minutes.<br><strong>simon@crisolutions.ie</strong></div>
+  </div>
+
+  <div class="footer">
+    <span class="footer-text">CRI Solutions &middot; Fractional CFO &amp; Finance Function &middot; Ireland</span>
+    <span class="footer-mark">CRI SOLUTIONS</span>
+  </div>
+
+  <div style="margin-top: 16px; text-align: center; font-size: 13px; color: #6B7280;">simon@crisolutions.ie</div>
+
+</div>
+</body>
+</html>
